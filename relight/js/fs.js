@@ -15,8 +15,9 @@ var fs_src = `
 
     vec3 normal;
 
-    vec3 calculate_lighting_old() {
-        vec3 lightDir = fPos - lightPos;
+    vec3 calculate_lighting() {
+        // vec3 lightDir = fPos - lightPos;
+        vec3 lightDir = lightPos - fPos;
         float distance = length(lightDir);
         if (distance >= 1.0) {
             distance = distance * distance;
@@ -40,35 +41,6 @@ var fs_src = `
 
         vec3 color = diffuse; // + specular;
         return color;
-    }
-
-    vec3 calculate_lighting() {
-        // Correct light direction: from surface to light
-        vec3 lightDir = normalize(lightPos - fPos);
-        
-        // Calculate distance with a minimum threshold to prevent division by zero
-        float distance = max(length(lightPos - fPos), 0.1);
-        distance = distance * distance;
-    
-        // Diffuse component
-        float lambertian = max(dot(lightDir, normal), 0.0);
-        vec3 diffuse = diffuseColor * lambertian / distance;
-    
-        // Specular component (optional for shiny effects)
-        float specularCoeff = 0.0;
-        if (lambertian > 0.0) {
-            vec3 viewDir = normalize(-fPos);
-            vec3 halfDir = normalize(lightDir + viewDir);
-            float specAngle = max(dot(halfDir, normal), 0.0);
-            specularCoeff = pow(specAngle, 16.0); // Adjust shininess factor
-        }
-        vec3 specular = specularCoeff * specColor / distance;
-    
-        // Shadow effect (soft shadow simulation)
-        float shadowFactor = clamp(1.0 - lambertian, 0.0, 1.0);
-        diffuse *= (1.0 - shadowFactor * 0.5); // Reduce light intensity in shadows
-    
-        return diffuse + specular;
     }
 
     void main() {
