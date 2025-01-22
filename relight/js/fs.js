@@ -77,7 +77,7 @@ var fs_src = `
 
     vec3 calculate_lighting() {
         // 计算从光源到片段的光照方向
-        vec3 lightDir = normalize(lightPos - fPos); // 从光源指向片段的方向
+        vec3 lightDir = normalize(fPos - lightPos); 
         float distance = max(length(lightPos - fPos), 0.1); // 确保距离大于0
         float attenuation = 1.0 / (distance * distance); // 光照衰减
 
