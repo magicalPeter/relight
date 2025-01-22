@@ -16,8 +16,8 @@ var fs_src = `
     vec3 normal;
 
     vec3 calculate_lighting() {
-        // vec3 lightDir = fPos - lightPos;
-        vec3 lightDir = lightPos - fPos;
+        vec3 lightDir = fPos - lightPos;
+        // vec3 lightDir = lightPos - fPos;
         float distance = length(lightDir);
         if (distance >= 1.0) {
             distance = distance * distance;
