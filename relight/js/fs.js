@@ -25,7 +25,7 @@ var fs_src = `
         }
         lightDir = normalize(lightDir);
     
-        float lambertian = max(dot(lightDir, normal), 0.0);
+        float lambertian = max(dot(lightDir, -normal), 0.0);
         vec3 diffuse = diffuseColor * lambertian / distance;
 
         // float specularCoeff = 0.0;
