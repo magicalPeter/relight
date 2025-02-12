@@ -173,8 +173,8 @@ var ImgHelper = {
         this.aspect_ratio = size[0] / size[1];
         return this.aspect_ratio;
     },
-    minZ: 255,
-    maxZ: 0,
+    minZ: 0,
+    maxZ: 255,
 
     normals: [],
     getNormals: function() {
