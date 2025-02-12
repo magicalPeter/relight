@@ -22,7 +22,7 @@ var ImgHelper = {
         imgContext.drawImage(srcImg, 0, 0);
 
         function createMeshFromImage() {
-            var minZ = 255, maxZ = 0;
+            var minZ = 0, maxZ = 255;
             var stepSize = blockSize - 1;
             var xSteps = Math.floor(width / stepSize);
             var ySteps = Math.floor(height / stepSize);
