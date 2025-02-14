@@ -16,12 +16,12 @@ var vs_src = `
         float yDiv = imgSize.y / 2.0;
 
         vec3 pos;
-        pos.x = (vPos.x / xDiv) - 1.0;
-        pos.y = (-vPos.y / yDiv) + 1.0;
-        pos.z = (vPos.z - minMaxZ.x) / (minMaxZ.y - minMaxZ.x + 1.0);
+        pos.x = (-vPos.x / xDiv) - 1.0;
+        pos.y = (vPos.y / yDiv) + 1.0;
+        pos.z = (vPos.z - minMaxZ.x) / (-minMaxZ.y + minMaxZ.x + 1.0);
 
         fPos  = pos;
-        texCoords = vec2((pos.x + 1.0) / 2.0, -(pos.y - 1.0) / 2.0);
+        texCoords = vec2(-(pos.x + 1.0) / 2.0, (pos.y - 1.0) / 2.0);
 
         vec3 correctedNormal = normalize(normal);
         correctedNormal = vec3(correctedNormal.x, -correctedNormal.y, correctedNormal.z);
