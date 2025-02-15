@@ -22,7 +22,7 @@ var ImgHelper = {
         imgContext.drawImage(srcImg, 0, 0);
 
         function createMeshFromImage() {
-            var minZ = 0, maxZ = 255;
+            var minZ = 255, maxZ = 0;
             var stepSize = blockSize - 1;
             var xSteps = Math.floor(width / stepSize);
             var ySteps = Math.floor(height / stepSize);
@@ -173,8 +173,8 @@ var ImgHelper = {
         this.aspect_ratio = size[0] / size[1];
         return this.aspect_ratio;
     },
-    minZ: 0,
-    maxZ: 255,
+    minZ: 255,
+    maxZ: 0,
 
     normals: [],
     getNormals: function() {
