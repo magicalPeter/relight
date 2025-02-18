@@ -322,6 +322,8 @@ function draw() {
 
     gl.bindTexture(gl.TEXTURE_2D, imgBuffer.texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, document.getElementById('src-tex-img'));
+    gl.generateMipmap(gl.TEXTURE_2D); //add
+    gl.bindTexture(gl.TEXTURE_2D, null); //add
 
     gl.uniform2fv(shaderProgram.imgSizeUnif, new Float32Array(ImgHelper.getImageSize()));
     gl.uniform2fv(shaderProgram.minMaxZUnif, new Float32Array([ImgHelper.minZ, ImgHelper.maxZ]));
